@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotizador 3D</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+  <header>
+    <nav class=" navbar navbar-expand-lg ">
+      <div class="container-fluid navbar_completo">
+        <a class="navbar-brand" href="./index.html"><img class="logo" src="./img/Logo.png" alt="Printing Logo"></a>
+        <nav class="navbar search">
+          <div class="container-fluid">
+            <form id="form_busqueda" class="d-flex" role="search">
+              <input class="form-control me-2" id="busqueda_material" type="search" placeholder="Buscar material"
+                aria-label="Search">
+              <button class="btn btn-outline-success" id="btn_busqueda_material" type="submit">Ir</button>
+            </form>
+          </div>
+        </nav>
+
+    </nav>
+  </header>
+  <main>
+    <div class="input_box">
+      <form id="form_presupuesto" action="">
+        <h1> Pedí tu presupuesto </h1>
+        <h2>01. Elegí una unidad de medida</h2>
+        <div class="input_unidades">
+          <label for="milimetros"><input type="radio" id="rad1" value="1" name="button" /> Milímetros</label>
+          <br>
+          <label for="centimetros"><input type="radio" id="rad2" value="2" name="button" /> Centímetros</label>
+          <br>
+        </div>
+
+        <h2>02. Ingresá las medidas máximas de tu modelo 3D</h2>
+        <p id="aviso_medidas"></p>
+
+        <div>
+          <label id="input_ancho" for="ancho">Ancho</label>
+          <input class="input_medidas" type="text">
+        </div>
+
+        <div>
+          <label id="input_largo" for="largo">Largo</label>
+          <input class="input_medidas" type="text">
+        </div>
+
+        <div>
+          <label id="input_alto" for="alto">Alto</label>
+          <input class="input_medidas" type="text">
+        </div>
+
+
+
+        <h2>03. Elegí el tipo de filamento</h2>
+
+        <div class="input_filamentos">
+          <select id="seleccion_filamento" name="filamentos">
+            <option value="pla">PLA</option>
+            <option value="petg">Petg</option>
+            <option value="abs">ABS</option>
+          </select>
+        </div>
+
+
+        <h2>¿Qué densidad de impresión querés?</h2>
+        <div class="input_densidad">
+          5%<input id="input_range" type="range" min="5" max="100" />100%
+        </div>
+        <div>
+          <p id="texto_resultado"></p>
+        </div>
+        <div class="d-grid gap-2 button_cotizar">
+          <button class="btn btn-primary" type="submit">Cotizar Impresión</button>
+        </div>
+      </form>
+    </div>
+    <div class="img_medidas">
+      <img class="img_cubo" src="./img/cubo.png" alt="Ingresá las medidas de tu modelo 3D">
+    </div>
+
+  </main>
+  <p id="aviso_presupuesto"></p>
+
+  <div class="seccion_presupuestos">
+
+    <table id="tabla_presupuestos">
+    </table>
+
+    <button id="historial" class="btn btn-success" type="submit">Comparar Presupuestos</button>
+
+    <table id="tabla_historial">
+      <tr id="historial_presupuestos">
+        <th>Número</th>
+        <th>Dimensiones</th>
+        <th>Material</th>
+        <th>Densidad</th>
+        <th>Precio</th>
+      </tr>
+    </table>
+
+  </div>
+
+  <section id="carrousel_cards">
+    <div id="subtitulo">
+      <h3>Materiales disponibles</h3>
+    </div>
+
+    <div id="carouselExampleControls" class="carousel slide ">
+      <div class="carousel-inner">
+        <div id="card_petg" class="carousel-item active">
+          <div class="card" style="width: 18rem;">
+            <img src="./img/Plastico-PET.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">PETG</h5>
+              <p class="card-text">El plástico PETG, o poliéster de glicol, es un termoplástico popular en el mercado de
+                fabricación aditiva, que combina tanto la simplicidad de la impresión PLA como la resistencia del ABS.
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <div id="card_abs" class="carousel-item">
+          <div class="card" style="width: 18rem;">
+            <img src="./img/Plastico-ABS.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">ABS</h5>
+              <p class="card-text">El polímero ABS es un terpolímero amorfo que se fabrica combinando tres compuestos
+                distintos. Los tres elementos que componen el plástico ABS son el acrilonitrilo, el butadieno y el
+                estireno.</p>
+
+            </div>
+          </div>
+        </div>
+        <div id="card_pla" class="carousel-item">
+          <div class="card" style="width: 18rem;">
+            <img src="./img/Plastico-PLA.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">PLA</h5>
+              <p class="card-text">El PLA (ácido poliláctico), también llamado ácido poliláctico, se deriva de materias
+                primas naturales y renovables, como el maíz, y pertenece a los poliésteres como un polímero sintético.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <p class="copyright">© Sebastián Granotich - 2022</p>
+    </div>
+  </footer>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="./js/index.js"></script>
+
+</body>
+
+</html>

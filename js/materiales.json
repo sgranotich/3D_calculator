@@ -1,0 +1,18 @@
+
+[
+    {
+        "nombre": "pla",
+        "precio": 10,
+        "densidad": 1.24
+    },
+    {
+        "nombre": "abs",
+        "precio": 15,
+        "densidad": 1.04
+    },
+    {
+        "nombre": "petg",
+        "precio": 20,
+        "densidad": 1.27
+    }
+]
