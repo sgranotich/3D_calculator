@@ -239,7 +239,6 @@ function crear_fila_presupuesto() { //Una vez con el presupuesto hecho, voy agre
 }
 
 
-
 let historial = document.getElementById("historial");
 
 //Función ver historial
